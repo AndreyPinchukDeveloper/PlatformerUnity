@@ -72,10 +72,5 @@ public class PlatformerPlayer : MonoBehaviour
         {
             transform.localScale = new Vector3(Mathf.Sign(deltaX) / pScale.x, 1 / pScale.y, 1);
         }
-        /*
-        if (!Mathf.Approximately(deltaX, 0))
-        {
-            transform.localScale = new Vector3(Mathf.Sign(deltaX), 1, 1);
-        }*/
     }
 }
