@@ -14,11 +14,13 @@ public class Player : MonoBehaviour
     private string _deathAnimation = "Death";
     #endregion
 
-    [SerializeField]
-    private float moveForce =100f;
-    [SerializeField]
-    private float jumpForce = 11f;
-    private float movementX;
+    private string _groundTag = "Ground";
+
+    [SerializeField] private float _moveForce =100f;
+    [SerializeField] private float _jumpForce = 11f;
+
+    private float _movementX;
+    private bool _isGrounded = true;
 
     private SpriteRenderer _spriteRenderer;
 
@@ -60,20 +62,20 @@ public class Player : MonoBehaviour
     /// </summary>
     private void PlayerMoveKeyBoard()
     {
-        movementX = Input.GetAxisRaw("Horizontal");
-        transform.position += new Vector3(movementX, 0f, 0f)* Time.deltaTime * moveForce;
+        _movementX = Input.GetAxisRaw("Horizontal");
+        transform.position += new Vector3(_movementX, 0f, 0f)* Time.deltaTime * _moveForce;
     }
 
     private void AnimatePlayer()
     {
         //going to the right side
-        if (movementX>0)
+        if (_movementX>0)
         {
             _anim.SetBool(_walkAnimation, true);
             _spriteRenderer.flipX = false;
         }
         //going to the left side
-        else if (movementX<0)
+        else if (_movementX<0)
         {
             _anim.SetBool(_walkAnimation, true);
             _spriteRenderer.flipX = true;
@@ -86,9 +88,21 @@ public class Player : MonoBehaviour
 
     private void Jump()
     {
-        if (Input.GetButton("Jump"))
+        if (Input.GetButton("Jump")&&_isGrounded)
         {
-            _body.AddForce(new Vector2(0f, jumpForce), ForceMode2D.Impulse);
+            _isGrounded = false;//we need it to forbid second jump while player already jump
+            _body.AddForce(new Vector2(0f, _jumpForce), ForceMode2D.Impulse);
+        }
+    }
+
+    /// <summary>
+    /// This method need us to give the player opportunity to jump again after method Jump()
+    /// </summary>
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag(_groundTag))
+        {
+            _isGrounded = true;
         }
     }
 }
