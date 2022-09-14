@@ -16,6 +16,10 @@ public class FollowCam : MonoBehaviour
     {
         _velocity = transform.position;
         _velocity.x = _target.position.x;
+
+        if (_velocity.x < _minX) _velocity.x = _minX;
+        if (_velocity.x > _maxX) _velocity.x = _maxX;
+
         transform.position = _velocity;
     }
     // Start is called before the first frame update
