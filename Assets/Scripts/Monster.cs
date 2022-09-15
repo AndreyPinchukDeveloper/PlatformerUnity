@@ -13,7 +13,7 @@ public class Monster : MonoBehaviour
     [SerializeField] private float _moveForce = 100f;
     [SerializeField] private float _jumpForce = 11f;
 
-    private float _movementX;
+    [HideInInspector] public float _movementX;
     private bool _isGrounded = true;
 
     private SpriteRenderer _spriteRenderer;
@@ -28,8 +28,6 @@ public class Monster : MonoBehaviour
         _body = GetComponent<Rigidbody2D>();
         _box = GetComponent<BoxCollider2D>();
         _spriteRenderer = GetComponent<SpriteRenderer>();
-
-        _movementX = 10;
     }
 
     void FixedUpdate()
