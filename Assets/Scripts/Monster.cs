@@ -8,8 +8,6 @@ public class Monster : MonoBehaviour
     private string _idleAnimation = "Idle";
     #endregion
 
-    private string _enemyTag = "Enemy";
-
     [SerializeField] private float _moveForce = 100f;
     [SerializeField] private float _jumpForce = 11f;
 

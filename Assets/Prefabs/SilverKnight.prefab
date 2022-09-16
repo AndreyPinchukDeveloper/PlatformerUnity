@@ -165,4 +165,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _moveForce: 20
-  _jumpForce: 15
+  _jumpForce: 20

@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3054714050635720441}
   - component: {fileID: 608432307043837413}
   - component: {fileID: 1707584791}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: DarkJelly
   m_TagString: Enemy
   m_Icon: {fileID: 0}

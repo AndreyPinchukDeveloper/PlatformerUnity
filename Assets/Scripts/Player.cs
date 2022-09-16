@@ -14,7 +14,11 @@ public class Player : MonoBehaviour
     private string _deathAnimation = "Death";
     #endregion
 
+    #region Tags
     private string _groundTag = "Ground";
+    private string _enemyTag = "Enemy";
+    #endregion
+
 
     [SerializeField] private float _moveForce =100f;
     [SerializeField] private float _jumpForce = 11f;
@@ -103,6 +107,11 @@ public class Player : MonoBehaviour
         if (collision.gameObject.CompareTag(_groundTag))
         {
             _isGrounded = true;
+        }
+        if (collision.gameObject.CompareTag(_enemyTag))
+        {
+            _anim.SetBool(_deathAnimation, true);
+            //Destroy(gameObject);
         }
     }
 }

@@ -14,6 +14,12 @@ public class FollowCam : MonoBehaviour
         //LU calls after all calculation in Update has been done
         //we'll have conflicts if we write thisd code in Update, like "slide show"
     {
+        //if player have been destroyed, code below won't create an exception
+        if (_target == null)//we can write just (!_target) 
+        {
+            return;
+        }
+
         _velocity = transform.position;
         _velocity.x = _target.position.x;
 
