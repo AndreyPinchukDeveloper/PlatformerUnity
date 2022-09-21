@@ -136,7 +136,7 @@ GameObject:
   - component: {fileID: 111362518}
   - component: {fileID: 111362517}
   m_Layer: 5
-  m_Name: Pikeman
+  m_Name: 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -237,7 +237,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: c75ad4938bb7d4f4b9c199f1d7d50c28, type: 3}
+  m_Sprite: {fileID: 21300000, guid: da1f5c43d3e60a846b3f3ab417e1cfd7, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -635,7 +635,7 @@ GameObject:
   - component: {fileID: 1870502020}
   - component: {fileID: 1870502019}
   m_Layer: 5
-  m_Name: Swordman
+  m_Name: 0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -748,7 +748,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: da1f5c43d3e60a846b3f3ab417e1cfd7, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c75ad4938bb7d4f4b9c199f1d7d50c28, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -779,7 +779,7 @@ GameObject:
   - component: {fileID: 1933547407}
   - component: {fileID: 1933547406}
   m_Layer: 5
-  m_Name: Axeman
+  m_Name: 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1010,7 +1010,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc3b82d9b82ff4540bdc2e7f27c4ddcb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _characters: []
+  _characters:
+  - {fileID: 3883147167335126745, guid: 0add0f88c55317c4caac8dbe4ba9e131, type: 3}
+  - {fileID: 6597927731451624945, guid: 920bec77873c5914aa1bcb43ee573e86, type: 3}
 --- !u!4 &1997922751
 Transform:
   m_ObjectHideFlags: 0

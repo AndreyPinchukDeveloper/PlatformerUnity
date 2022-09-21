@@ -30,7 +30,12 @@ public class Player : MonoBehaviour
 
     private Rigidbody2D _body;
     private BoxCollider2D _box;
-    private Animator _anim;
+
+    #region StateMachine
+    [HideInInspector] public Animator _anim;
+    private StateMachine _stateMachine;
+    #endregion
+
 
     private void Awake()
     {
@@ -43,12 +48,15 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
-
+        _stateMachine = new StateMachine();//connect state machine
+        _stateMachine.Initialize(new IdleState());
     }
 
     // Update is called once per frame
     private void Update()
     {
+        _stateMachine.CurrentState.Update();//we have to connect it here to use it
+
         PlayerMoveKeyBoard();
         AnimatePlayer();
     }
