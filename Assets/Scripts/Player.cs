@@ -33,7 +33,6 @@ public class Player : MonoBehaviour
 
     #region StateMachine
     [HideInInspector] public Animator _anim;
-    private StateMachine _stateMachine;
     #endregion
 
 
@@ -45,18 +44,13 @@ public class Player : MonoBehaviour
         _spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
-    // Start is called before the first frame update
     private void Start()
     {
-        _stateMachine = new StateMachine();//connect state machine
-        _stateMachine.Initialize(new IdleState());
+
     }
 
-    // Update is called once per frame
     private void Update()
     {
-        _stateMachine.CurrentState.Update();//we have to connect it here to use it
-
         PlayerMoveKeyBoard();
         AnimatePlayer();
     }
@@ -72,6 +66,7 @@ public class Player : MonoBehaviour
     /// <summary>
     /// Left and right movement
     /// </summary>
+    
     private void PlayerMoveKeyBoard()
     {
         _movementX = Input.GetAxisRaw("Horizontal");

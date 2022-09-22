@@ -2,17 +2,32 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class JumpState : MonoBehaviour
+public class JumpState : State
 {
-    // Start is called before the first frame update
-    void Start()
+    private MainHero _mainHero;
+
+    public JumpState(MainHero mainHero)
     {
-        
+        _mainHero = mainHero;
     }
 
-    // Update is called once per frame
-    void Update()
+    public override void Enter()
     {
-        
+        base.Enter();
+        _mainHero._animator.CrossFade("Jump", 0.1f);
+        _mainHero._body.AddForce(new Vector2(0f, _mainHero._jumpForce), ForceMode2D.Impulse);
+    }
+
+    public override void Exit()
+    {
+        base.Exit();
+
+    }
+
+    public override void Update()
+    {
+        base.Update();
+        //we need it to forbid second jump while player already jump
+        //_mainHero._body.AddForce(new Vector2(0f, _mainHero._jumpForce), ForceMode2D.Impulse);
     }
 }
