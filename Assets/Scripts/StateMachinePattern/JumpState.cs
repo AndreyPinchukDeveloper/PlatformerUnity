@@ -27,7 +27,5 @@ public class JumpState : State
     public override void Update()
     {
         base.Update();
-        //we need it to forbid second jump while player already jump
-        //_mainHero._body.AddForce(new Vector2(0f, _mainHero._jumpForce), ForceMode2D.Impulse);
     }
 }
