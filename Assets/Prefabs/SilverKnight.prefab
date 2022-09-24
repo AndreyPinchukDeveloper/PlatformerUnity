@@ -180,7 +180,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5121143ee75c0334bbbb40147bcf8c02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _animator: {fileID: 0}
+  _animator: {fileID: 6597927731451624944}
   SpriteRenderer: {fileID: 0}
   _jumpForce: 10
   _isGrounded: 1

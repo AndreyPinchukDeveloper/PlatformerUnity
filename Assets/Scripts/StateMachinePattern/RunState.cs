@@ -13,8 +13,7 @@ public class RunState : State
 
     public override void Enter()
     {
-        base.Enter();
-        RunAnimation();
+        base.Enter(); 
     }
 
     public override void Exit()
@@ -25,18 +24,18 @@ public class RunState : State
     public override void Update()
     {
         base.Update();
+        RunAnimation();
         RunLogic();
     }
 
     private void RunAnimation()
     {
+        _mainHero.MovementX = Input.GetAxisRaw("Horizontal") * _mainHero.MoveForce;
         _mainHero._animator.SetFloat("Speed", Mathf.Abs(_mainHero.MovementX));
     }
 
     private void RunLogic()
     {
-
-
         _mainHero.MovementX = Input.GetAxisRaw("Horizontal");
         _mainHero.transform.position += new Vector3(_mainHero.MovementX, 0f, 0f) * Time.deltaTime * _mainHero.MoveForce;
 

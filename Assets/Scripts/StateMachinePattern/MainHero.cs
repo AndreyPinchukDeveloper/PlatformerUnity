@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class MainHero : MonoBehaviour
 {
-    [HideInInspector] public Animator _animator;
+    public Animator _animator;
     [HideInInspector] public SpriteRenderer SpriteRenderer;
     public float _jumpForce = 11f;
     private StateMachine _stateMachine;
     public bool _isGrounded = true;
     public Rigidbody2D _body;
     public float MovementX;
-    public float MoveForce = 100f;
+    public float MoveForce = 40f;
 
     #region States
     private IdleState _idleState;
@@ -64,16 +64,12 @@ public class MainHero : MonoBehaviour
 
         if (Input.GetButton("Jump") && _isGrounded)
         {
-            _isGrounded = false;
+            _isGrounded = false;//we need it to forbid second jump while player already jump
             _stateMachine.ChangeState(_jumpState);
         }
         if (Input.GetKeyDown(KeyCode.A)|| Input.GetKeyDown(KeyCode.D))
         {
             _stateMachine.ChangeState(_runState);
-        }
-        else
-        {
-            _stateMachine.ChangeState(_idleState);
         }
     }
 
@@ -83,16 +79,10 @@ public class MainHero : MonoBehaviour
         {
             _isGrounded = true;
         }
-        /*if (collision.gameObject.CompareTag(_enemyTag))
-        {
-            _anim.SetBool(_deathAnimation, true);
-            //Destroy(gameObject);
-        }*/
     }
 
     void Update()
     {
-        //_stateMachine.CurrentState.Update();
-
+        
     }
 }
