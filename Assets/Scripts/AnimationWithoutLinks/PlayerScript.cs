@@ -53,7 +53,7 @@ public class PlayerScript : MonoBehaviour
             _isJumpPressed = true;
         }
 
-        if (Input.GetKeyDown(KeyCode.RightControl))
+        if (Input.GetKeyDown(KeyCode.E))
         {
             _isAttackPressed = true;
         }
@@ -64,8 +64,12 @@ public class PlayerScript : MonoBehaviour
     {
         //is player on the ground ?
         RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, 0.1f, _groundMask);
-        _isGrounded = hit.collider != null ? true : false;
 
+        if (_isGrounded != null)
+        {
+            _isGrounded = true;
+        }
+        else _isGrounded = false;
 
         //-------------------------------
         //movement update based on unput
@@ -83,19 +87,17 @@ public class PlayerScript : MonoBehaviour
             transform.localScale = new Vector2(1, 1);
             ChangeAnimationState(PLAYER_RUN);
         }
-        else
+        else vel.x = 0;
+
+        if (_isGrounded && !_isAttacking)//this condition need for animations don't override themself
         {
-            vel.x = 0;
-            
+            if (_xAxis != 0)
+            {
+                ChangeAnimationState(PLAYER_RUN);
+            }
+            else ChangeAnimationState(PLAYER_IDLE);
         }
-
-        if (_xAxis != 0)
-        {
-            ChangeAnimationState(PLAYER_RUN);
-        }
-        else ChangeAnimationState(PLAYER_IDLE);
-
-
+        
         //------------------------
         //trying to jump
         if (_isJumpPressed && _isGrounded)
@@ -116,8 +118,17 @@ public class PlayerScript : MonoBehaviour
             if (!_isAttacking)
             {
                 _isAttacking = true;
+                ChangeAnimationState(PLAYER_ATTACK);
             }
+
+            _attackDelay = _animator.GetCurrentAnimatorStateInfo(0).length;
+            Invoke("AttackComplete", _attackDelay);
         }
+    }
+
+    private void AttackComplete()
+    {
+        _isAttacking = false;
     }
 
     private void ChangeAnimationState(string newState)
