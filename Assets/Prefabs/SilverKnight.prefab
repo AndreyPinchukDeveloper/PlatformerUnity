@@ -13,10 +13,8 @@ GameObject:
   - component: {fileID: 6597927731451624944}
   - component: {fileID: 7140713793725818820}
   - component: {fileID: 6731426522869699330}
-  - component: {fileID: 1695438509205898697}
-  - component: {fileID: -4678701346986849237}
   - component: {fileID: -6733443525227759094}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: SilverKnight
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -154,41 +152,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &1695438509205898697
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6597927731451624945}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d581ef6671db23d41905f321fcf01ff6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _moveForce: 20
-  _jumpForce: 20
-  _anim: {fileID: 0}
---- !u!114 &-4678701346986849237
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6597927731451624945}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5121143ee75c0334bbbb40147bcf8c02, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _animator: {fileID: 6597927731451624944}
-  SpriteRenderer: {fileID: 0}
-  _jumpForce: 10
-  _isGrounded: 1
-  _body: {fileID: 0}
-  MovementX: 0
-  MoveForce: 40
-  RunAnimation: Run
 --- !u!114 &-6733443525227759094
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -201,6 +164,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 777a71a0ee7f56046a708db511f0b437, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _walkSpeed: 5
+  _walkSpeed: 10
   _attackDelay: 0.3
   _jumpForce: 850
+  _groundTag: Ground
+  _enemyTag: Enemy

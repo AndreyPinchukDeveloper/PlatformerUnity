@@ -105,7 +105,7 @@ public class Player : MonoBehaviour
     /// <summary>
     /// This method need us to give the player opportunity to jump again after method Jump()
     /// </summary>
-    private void OnCollisionEnter2D(Collision2D collision)
+    /*private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag(_groundTag))
         {
@@ -116,5 +116,5 @@ public class Player : MonoBehaviour
             _anim.SetBool(_deathAnimation, true);
             //Destroy(gameObject);
         }
-    }
+    }*/
 }

@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class PlayerScript : MonoBehaviour
 {
@@ -10,6 +11,11 @@ public class PlayerScript : MonoBehaviour
     [SerializeField] private float _jumpForce = 850;
     private float _xAxis;
     private float _yAxis;
+
+    #region Tags
+    [HideInInspector] public string _groundTag = "Ground";
+    [HideInInspector] public string _enemyTag = "Enemy";
+    #endregion
 
     private int _groundMask;
 
@@ -140,5 +146,33 @@ public class PlayerScript : MonoBehaviour
 
         //reassign the current state
         _currentState = newState;
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag(_groundTag))
+        {
+            _isGrounded = true;
+        }
+        if (collision.gameObject.CompareTag(_enemyTag))
+        {
+            HealthManager.health --;
+            if (HealthManager.health<=0)
+            {
+                ChangeAnimationState(PLAYER_DEATH);
+                _animator = null;
+            }
+            else
+            {
+                StartCoroutine(GetHurt());
+            }
+        }
+    }
+
+    IEnumerator GetHurt()
+    {
+        Physics2D.IgnoreLayerCollision(6, 8);
+        yield return new WaitForSeconds(3);
+        Physics2D.IgnoreLayerCollision(6, 8, false);
     }
 }

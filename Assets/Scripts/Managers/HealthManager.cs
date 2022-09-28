@@ -1,14 +1,14 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class HealthManager : MonoBehaviour
 {
-    [SerializeField] private int health = 3;
+    [SerializeField] public static int health = 3;
     [SerializeField] private Image[] hearts;
     [SerializeField] private Sprite _fullHeart;
     [SerializeField] private Sprite _emptyHeart;
+
+    PlayerScript _player;
 
     void Update()
     {
