@@ -10,6 +10,15 @@ public class HealthManager : MonoBehaviour
 
     PlayerScript _player;
 
+    /// <summary>
+    /// we nedd this method to avoid problrm with zero hearts when we restart game
+    /// that happens because health is static
+    /// </summary>
+    private void Awake()
+    {
+        health = 3;
+    }
+
     void Update()
     {
         foreach (Image heart in hearts)
