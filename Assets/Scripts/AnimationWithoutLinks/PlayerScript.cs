@@ -22,6 +22,7 @@ public class PlayerScript : MonoBehaviour
 
     private Animator _animator;
     private Rigidbody2D _body;
+    private Transform _transform;
 
     private bool _isJumpPressed;
     private bool _isGrounded;
@@ -33,7 +34,7 @@ public class PlayerScript : MonoBehaviour
 
     #region States
     const string PLAYER_IDLE = "Idle";
-    const string PLAYER_RUN = "Run";
+    //const string PLAYER_RUN = "Run";
     const string PLAYER_JUMP = "Jump";
     const string PLAYER_GETDAMAGE = "GetDamage";
     const string PLAYER_ATTACK = "AttackAnimation";
@@ -44,6 +45,7 @@ public class PlayerScript : MonoBehaviour
     {
         _animator = GetComponent<Animator>();
         _body = GetComponent<Rigidbody2D>();
+        _transform = GetComponent<Transform>();
         //we can write it as
         //_groundMask = 1 * (int)Math.Pow(2, 4);
         //but << is more than 50% faster(66%)
